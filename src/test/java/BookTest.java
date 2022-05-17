@@ -74,4 +74,28 @@ public class BookTest {
         Book book2 = new Book(book1.getId(), book1.getName(), book1.getPrice(), book1.getAuthor());
         assertEquals(book1.hashCode(), book2.hashCode());
     }
+
+    @Test
+    void shouldReturnTrueOnBookName() {
+        Book book = new Book(1, "Одна на двоих", 500, "Франческа Кейт");
+        assertTrue(book.matches("Одна на двоих"));
+    }
+
+    @Test
+    void shouldReturnFalseOnBookName() {
+        Book book = new Book(1, "Одна на двоих", 500, "Франческа Кейт");
+        assertFalse(book.matches("Незабываемый вечер"));
+    }
+
+    @Test
+    void shouldReturnTrueOnBookAuthor() {
+        Book book = new Book(1, "Одна на двоих", 500, "Франческа Кейт");
+        assertTrue(book.matches("Франческа Кейт"));
+    }
+
+    @Test
+    void shouldReturnFalseOnBookAuthor() {
+        Book book = new Book(1, "Одна на двоих", 500, "Франческа Кейт");
+        assertFalse(book.matches("Ирина Фуллер"));
+    }
 }
