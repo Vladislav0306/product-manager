@@ -26,4 +26,11 @@ class ProductManagerTest {
         Product[] actual = manager.searchBy("Одна на двоих");
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void getAll() {
+        Product[] expected = new Product[]{book1, book2, smartphone1, smartphone2};
+        Product[] actual = manager.getAll();
+        assertArrayEquals(expected, actual);
+    }
 }

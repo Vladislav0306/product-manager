@@ -74,4 +74,28 @@ public class SmartphoneTest {
         Smartphone smartphone2 = new Smartphone(smartphone1.getId(), smartphone1.getName(), smartphone1.getPrice(), smartphone1.getManufacturer());
         assertEquals(smartphone1.hashCode(), smartphone2.hashCode());
     }
+
+    @Test
+    void shouldReturnTrueOnSmartphoneManufacturer() {
+        Smartphone smartphone = new Smartphone(4, "P40 Lite", 20000, "Huawei");
+        assertTrue(smartphone.matches("Huawei"));
+    }
+
+    @Test
+    void shouldReturnFalseOnSmartphoneManufacturer() {
+        Smartphone smartphone = new Smartphone(4, "P40 Lite", 20000, "Huawei");
+        assertFalse(smartphone.matches("Samsung"));
+    }
+
+    @Test
+    void shouldReturnTrueOnSmartphoneName() {
+        Smartphone smartphone = new Smartphone(4, "P40 Lite", 20000, "Huawei");
+        assertTrue(smartphone.matches("P40 Lite"));
+    }
+
+    @Test
+    void shouldReturnFalseOnSmartphoneName() {
+        Smartphone smartphone = new Smartphone(4, "P40 Lite", 20000, "Huawei");
+        assertFalse(smartphone.matches("Galaxy S21 5G"));
+    }
 }

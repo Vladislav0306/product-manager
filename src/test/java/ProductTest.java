@@ -74,6 +74,13 @@ public class ProductTest {
     }
 
     @Test
+    void equals7() {
+        Product product1 = new Product(1, "Одна на двоих", 500);
+        Object o = product1;
+        assertEquals(product1, o);
+    }
+
+    @Test
     void toString1() {
         Product product = new Product(1, "Одна на двоих", 500);
         String string = product.toString();
@@ -85,5 +92,17 @@ public class ProductTest {
         Product product1 = new Product(1, "Одна на двоих", 500);
         Product product2 = new Product(product1.getId(), product1.getName(), product1.getPrice());
         assertEquals(product1.hashCode(), product2.hashCode());
+    }
+
+    @Test
+    void shouldReturnTrueName() {
+        Product product = new Product(1, "Одна на двоих", 500);
+        assertTrue(product.matches("Одна на двоих"));
+    }
+
+    @Test
+    void shouldReturnTrueFalse() {
+        Product product = new Product(1, "Одна на двоих", 500);
+        assertFalse(product.matches("Эксплеты. Лебединая башня"));
     }
 }
